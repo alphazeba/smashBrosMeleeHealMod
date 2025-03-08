@@ -1,4 +1,4 @@
-#To be inserted at 80376a24
+#To be inserted at 80376a1c
 # TODO we should choose a different injection address.
 # something that runs once per frame in the game.
 # i was able to confirm that current injection address does run once per frame in game.
@@ -7,7 +7,7 @@
 .include "../macros.asm"
 
 # call the replaced instruction
-branchl r12, 0x8034da00
+addi r30, r3, 0
 
 
 # start real code

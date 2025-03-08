@@ -10,7 +10,28 @@
         {
             "address": "804530E0",
             "baseIndex": 0,
-            "label": "sets percent visual",
+            "label": "p1 percent visual",
+            "typeIndex": 1,
+            "unsigned": false
+        },
+        {
+            "address": "80453F70",
+            "baseIndex": 0,
+            "label": "p2 percent visual",
+            "typeIndex": 1,
+            "unsigned": false
+        },
+        {
+            "address": "80454E00",
+            "baseIndex": 0,
+            "label": "p3 percent visual",
+            "typeIndex": 1,
+            "unsigned": false
+        },
+        {
+            "address": "80455C90",
+            "baseIndex": 0,
+            "label": "p4 percent visual",
             "typeIndex": 1,
             "unsigned": false
         },
@@ -33,15 +54,64 @@
             "unsigned": false
         },
         {
-            "address": "80453130",
+            "address": "80453FC0",
             "baseIndex": 0,
-            "label": "p1 damage",
-            "length": 8,
+            "label": "p2 damage",
             "pointerOffsets": [
                 "2C",
                 "1830"
             ],
-            "typeIndex": 6,
+            "typeIndex": 3,
+            "unsigned": false
+        },
+        {
+            "address": "80454E50",
+            "baseIndex": 0,
+            "label": "p3 damage",
+            "pointerOffsets": [
+                "2C",
+                "1830"
+            ],
+            "typeIndex": 3,
+            "unsigned": false
+        },
+        {
+            "address": "80455CE0",
+            "baseIndex": 0,
+            "label": "p4 damage",
+            "pointerOffsets": [
+                "2C",
+                "1830"
+            ],
+            "typeIndex": 3,
+            "unsigned": false
+        },
+        {
+            "address": "8045310E",
+            "baseIndex": 0,
+            "label": "p1 stock",
+            "typeIndex": 0,
+            "unsigned": false
+        },
+        {
+            "address": "80453F9E",
+            "baseIndex": 0,
+            "label": "p2 stock",
+            "typeIndex": 0,
+            "unsigned": false
+        },
+        {
+            "address": "80454E2E",
+            "baseIndex": 0,
+            "label": "p3 stock",
+            "typeIndex": 0,
+            "unsigned": false
+        },
+        {
+            "address": "80455CBE",
+            "baseIndex": 0,
+            "label": "p4 stock",
+            "typeIndex": 0,
             "unsigned": false
         },
         {
@@ -93,6 +163,80 @@
                 "18AC"
             ],
             "typeIndex": 2,
+            "unsigned": false
+        },
+        {
+            "address": "80479D60",
+            "baseIndex": 0,
+            "label": "No label",
+            "typeIndex": 2,
+            "unsigned": false
+        },
+        {
+            "address": "80453DA4",
+            "baseIndex": 0,
+            "label": "amount healed",
+            "typeIndex": 2,
+            "unsigned": false
+        },
+        {
+            "address": "8045308A",
+            "baseIndex": 0,
+            "label": "p1 type",
+            "typeIndex": 1,
+            "unsigned": false
+        },
+        {
+            "address": "80453F1A",
+            "baseIndex": 0,
+            "label": "p2 type",
+            "typeIndex": 1,
+            "unsigned": false
+        },
+        {
+            "address": "80454DAA",
+            "baseIndex": 0,
+            "label": "p3 type",
+            "typeIndex": 1,
+            "unsigned": false
+        },
+        {
+            "address": "80455C3A",
+            "baseIndex": 0,
+            "label": "p4 type",
+            "typeIndex": 1,
+            "unsigned": false
+        },
+        {
+            "address": "80453130",
+            "baseIndex": 0,
+            "label": "zeroth step",
+            "length": 4,
+            "pointerOffsets": [
+            ],
+            "typeIndex": 6,
+            "unsigned": false
+        },
+        {
+            "address": "80453130",
+            "baseIndex": 0,
+            "label": "first step",
+            "length": 4,
+            "pointerOffsets": [
+                "2C"
+            ],
+            "typeIndex": 6,
+            "unsigned": false
+        },
+        {
+            "address": "80453130",
+            "baseIndex": 0,
+            "label": "p1 damage",
+            "pointerOffsets": [
+                "2C",
+                "1830"
+            ],
+            "typeIndex": 3,
             "unsigned": false
         }
     ]
