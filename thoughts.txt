@@ -1,0 +1,57 @@
+potential memory addresses for p1 damage
+DMG = 2b @ 0x804530E0 # 0x80453080 + 0x60 is the visual representation of the player's damage.
+DMF_FLOAT? = float @ 0x80453080 + 0x1830?
+DMG is set at 
+	80034494 sth	r4, 0x0060 (r3) 
+r3 stores damaged player's start address
+r4 is the calculated damage.
+question where is this value being pulled from?
+
+rlwinm	RA, RS, SH, MB, ME
+
+what is cntlzw
+Counts the number of leading zeros of the 32-bit value in a source general-purpose register (GPR) and stores the result in a GPR
+
+i tried updating the value in r29 to 1 at instruction 80034470.
+this resulted in r4 becoming 1 * 3728 = 0xe90 as expected.
+lol so this turns out to be how it selects which player to choose
+use address 0x804530E0 + p * 3728 where p is player 0 = p1, 1 = p2.
+
+
+-------------------
+where X is 
+p1 = 0x80453130
+p2 = 0x80453FC0
+p3 = 0x80454E50
+p4 = 0x80455CE0
+
+where Z is
+p1 = 0x80453080
+p2 = 0x80453F10
+p3 = 0x80454DA0
+p4 = 0x80455C30
+
+get entity location: E = X->0x2c
+get true percentage memory address: P = E->0x1830
+read value at P
+decrease value at P by some value
+set value at P.
+convert float P to short S
+set visible percentage by storing S at Z->0x60
+
+
+
+before the rounding
+4038f0e080000000
+
+after the rounding
+fff8000000000018
+( i am expecting 0x18 to be 24 ) it is
+
+
+before ending the game
+from 80453da0 - f
+42 F5 5C 28 00 00 00 72 43 3E 8D F0 00 00 00 00
+0x80453da4 is amount healed address.
+
+i expect that 00 00 00 72 is the healing value

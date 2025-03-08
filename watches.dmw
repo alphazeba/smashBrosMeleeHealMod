@@ -1,0 +1,99 @@
+{
+    "watchList": [
+        {
+            "address": "80453080",
+            "baseIndex": 0,
+            "label": "p1 block start",
+            "typeIndex": 0,
+            "unsigned": false
+        },
+        {
+            "address": "804530E0",
+            "baseIndex": 0,
+            "label": "sets percent visual",
+            "typeIndex": 1,
+            "unsigned": false
+        },
+        {
+            "address": "804530C4",
+            "baseIndex": 0,
+            "label": "costume",
+            "typeIndex": 0,
+            "unsigned": false
+        },
+        {
+            "address": "80453130",
+            "baseIndex": 0,
+            "label": "p1 damage",
+            "pointerOffsets": [
+                "2C",
+                "1830"
+            ],
+            "typeIndex": 3,
+            "unsigned": false
+        },
+        {
+            "address": "80453130",
+            "baseIndex": 0,
+            "label": "p1 damage",
+            "length": 8,
+            "pointerOffsets": [
+                "2C",
+                "1830"
+            ],
+            "typeIndex": 6,
+            "unsigned": false
+        },
+        {
+            "address": "80479D30",
+            "baseIndex": 0,
+            "label": "scene controller",
+            "length": 4,
+            "typeIndex": 6,
+            "unsigned": false
+        },
+        {
+            "address": "80479D68",
+            "baseIndex": 0,
+            "label": "No label",
+            "length": 4,
+            "typeIndex": 6,
+            "unsigned": false
+        },
+        {
+            "address": "80479D33",
+            "baseIndex": 0,
+            "label": "sceneMinor",
+            "typeIndex": 0,
+            "unsigned": false
+        },
+        {
+            "address": "804530E1",
+            "baseIndex": 0,
+            "label": "hit cooldown?",
+            "typeIndex": 0,
+            "unsigned": false
+        },
+        {
+            "address": "80453130",
+            "baseIndex": 0,
+            "label": "last hit",
+            "pointerOffsets": [
+                "190C"
+            ],
+            "typeIndex": 2,
+            "unsigned": false
+        },
+        {
+            "address": "80453130",
+            "baseIndex": 0,
+            "label": "last hit secodn try",
+            "pointerOffsets": [
+                "2C",
+                "18AC"
+            ],
+            "typeIndex": 2,
+            "unsigned": false
+        }
+    ]
+}
