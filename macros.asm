@@ -1,8 +1,8 @@
-.macro modulo regout, regnum, regdivisor, regscratch
+.macro modulo regout, regnum, regdivisor
 # divide regnum by regdivisor
-divw \regscratch, \regnum, \regdivisor
+divw \regout, \regnum, \regdivisor
 # multiply output by regdivisor
-mullw \regout, \regdivisor, \regscratch
+mullw \regout, \regdivisor, \regout
 # subtract regnum with output2
 sub \regout, \regnum, \regout
 .endm
@@ -39,9 +39,11 @@ mtctr \reg
 bctrl
 .endm
 
-.macro followp reg, offset
+.macro followp reg, regscratch, offset
 lwz \reg, \offset(\reg)
-cmpwi \reg, 0
+lis \regscratch, 0x8000
+and \regscratch, \reg, \regscratch
+cmpwi \regscratch, 0
 beq DONE_HANDLING_PLAYER
 .endm
 
