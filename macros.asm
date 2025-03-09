@@ -27,6 +27,7 @@ load \reg, \address
 lhz \reg, 0(\reg)
 .endm
 
+# todo this should be loadfsi
 .macro loadfs reg, freg, value
 load \reg, \value
 stw \reg, -0x4(sp)

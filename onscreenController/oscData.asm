@@ -1,0 +1,8 @@
+DATA_LOC:
+blrl
+
+.set FLOAT_ONE_FIVE, 0
+.float 123.8889
+
+.set FLOAT_URMUM, FLOAT_ONE_FIVE + 4
+.float 69420
