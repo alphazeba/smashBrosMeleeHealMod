@@ -1,0 +1,18 @@
+{
+	"outputFiles": [{
+		"file": "Output/test/test.ini",
+		"header": [
+			"# alphazeba was here",
+			"[gecko]"
+		]
+	}],
+	"codes": [{
+		"name": "heal code",
+		"authors": ["alphazeba"],
+		"build": [{
+			"type": "inject",
+			"sourceFile": "healCode.asm",
+			"annotation": "heal code"
+		}]
+	}]
+}

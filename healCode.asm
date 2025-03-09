@@ -4,7 +4,7 @@
 # i was able to confirm that current injection address does run once per frame in game.
 # however, we should still find a different place to inject so it doesn't conflict with slippi
 
-.include "../macros.asm"
+.include "./macros.asm"
 
 # call the replaced instruction
 addi r30, r3, 0
