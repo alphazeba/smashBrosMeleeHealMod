@@ -46,6 +46,8 @@ followp \reg, \regscratch STATIC_ENTITY_DATA_POINTER_OFFSET
 .set HEAL_EVERY_X_FRAMES, 8 # 60fps * 1hp/8f = 7.5 hp/s
 .set FRAMES_TO_DELAY_HEAL, 240
 
+.set REG_CUR_PLAYER, 12
+
 # check skip scenarios
 loadbz r3, SCENE_MINOR_ADDRESS
 cmpwi r3, 0x2 # Checks if we are in-game
@@ -64,17 +66,17 @@ bgt EXIT # pause value will be greater than zero if paused
 # check if this is valid frame
 loadwz r3, FRAME_COUNTER_ADDRESS
 load r4, HEAL_EVERY_X_FRAMES
-modulo r2, r3, r4
-cmpwi r2, 0
+modulo r5, r3, r4
+cmpwi r5, 0
 bne EXIT
 
 CHECK_IF_ANY_PLAYERS_FULL_HEALTH:
 # for each player, check if they are in game.
 # check if they are in game.
-li r2, 0
+li REG_CUR_PLAYER, 0
 
 CHECK_NEXT_PLAYER:
-offsetaddr r7, r4, STATIC_BLOCK_ADDRESS, STATIC_BLOCK_OFFSET, r2
+offsetaddr r7, r4, STATIC_BLOCK_ADDRESS, STATIC_BLOCK_OFFSET, REG_CUR_PLAYER
 # is player slot in use?
 lhz r3, STATIC_BLOCK_PLAYER_TYPE_OFFSET(r7)
 cmpwi r3, PLAYER_TYPE_NONE
@@ -90,17 +92,17 @@ cmpwi r5, 0
 ble EXIT
 
 DONE_CHECKING_PLAYER:
-addi r2, r2, 1
-cmpwi r2, 4
+addi REG_CUR_PLAYER, REG_CUR_PLAYER, 1
+cmpwi REG_CUR_PLAYER, 4
 blt CHECK_NEXT_PLAYER
 
 
 PERFORM_HEAL:
 # set player register to 0
-li r2, 0
+li REG_CUR_PLAYER, 0
 
 HANDLE_PLAYER:
-loadplayerdatapointer r6, r4, r2
+loadplayerdatapointer r6, r4, REG_CUR_PLAYER
 
 # check if it has been too soon since last hit
 lwz r4, DATA_POINTER_LAST_HIT_OFFSET(r6)
@@ -121,7 +123,7 @@ HEAL_BY_AMOUNT:
 # perform heal
 fsubs f3, f3, f4
 
-offsetaddr r7, r4, STATIC_BLOCK_ADDRESS, STATIC_BLOCK_OFFSET, r2
+offsetaddr r7, r4, STATIC_BLOCK_ADDRESS, STATIC_BLOCK_OFFSET, REG_CUR_PLAYER
 # score healing
 lwz r4, STATIC_BLOCK_AMOUNT_HEALED_OFFSET(r7)
 addi r4, r4, 1
@@ -143,8 +145,8 @@ sth r4, STATIC_BLOCK_PERCENT_VISUAL_OFFSET(r7)
 DONE_HANDLING_PLAYER:
 
 # increment the player count register
-addi r2, r2, 1
-cmpwi r2, 4
+addi REG_CUR_PLAYER, REG_CUR_PLAYER, 1
+cmpwi REG_CUR_PLAYER, 4
 blt HANDLE_PLAYER
 
 EXIT:

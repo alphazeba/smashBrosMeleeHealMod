@@ -1,18 +1,34 @@
 {
 	"outputFiles": [{
-		"file": "Output/test/test.ini",
+		"file": "$OUTPUT/GALE01.ini",
 		"header": [
-			"# alphazeba was here",
+			"# smashBrosMeleeHealCodes",
+			"[gecko_enabled]",
+			"$Unlock All Characters and Stages",
+			"$Boot to Character Select Screen",
+			"$CSS Player Hands Default to HMN Button",
+			"$heal code",
+			"$on screen controller",
 			"[gecko]"
 		]
 	}],
-	"codes": [{
+	"codes": [
+	{
 		"name": "heal code",
 		"authors": ["alphazeba"],
+		"description": ["Players will heal ~7.5 hp/s 6 seconds after recieving a hit."],
 		"build": [{
 			"type": "inject",
-			"sourceFile": "healCode.asm",
-			"annotation": "heal code"
+			"sourceFile": "healCode.asm"
+		}]
+	},
+	{
+		"name": "on screen controller",
+		"authors": ["alphazeba"],
+		"description": ["display an onscreen controller visualization in game"],
+		"build": [{
+			"type": "inject",
+			"sourceFile":"onscreenController.asm"
 		}]
 	}]
 }
