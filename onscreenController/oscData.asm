@@ -22,6 +22,7 @@ blrl
 .set TEXT_Z, TEXT_Y + 4
 .float 0.0
 
-.set TEXT, TEXT_Z + 4
+TEXT_LOC:
+blrl
 .string "abxy"
 .align 2

@@ -148,7 +148,9 @@ crset 6 # even code i'm looking at doesn't know what this is.
 lfs f1, FLOAT_ZERO(REG_DATA_ADDR)
 fmr f2, f2
 mr r3, REG_TEXT_STRUCT
-lwz r4, TEXT(REG_DATA_ADDR)  # so far i have tracked to about here looking ok
+# previously i was literally putting the text in the register.  Now im building the pointer to the text
+bl TEXT_LOC
+mflr r4
 branchl REG_SCRATCH, Text_InitializeSubtext
 b EXIT
 
