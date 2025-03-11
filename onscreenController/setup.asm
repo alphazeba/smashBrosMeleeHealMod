@@ -49,18 +49,22 @@ li r10, COBJ_GXPRI
 branchl REG_SCRATCH, 0x803a611c
 mr REG_CANVAS, r3
 
-# build pieces
-bl MAIN_STICK_LOC
+.macro setupPiece loc, strct
+bl \loc
 mflr r3
 li r4, 0
-load r5, MAIN_STICK_STRUCT
+load r5, \strct
 bl SETUP_PIECE
+.endm
 
-bl C_STICK_LOC
-mflr r3
-li r4, 0
-load r5, C_STICK_STRUCT
-bl SETUP_PIECE
+# build pieces
+setupPiece MAIN_STICK_LOC, MAIN_STICK_STRUCT
+setupPiece C_STICK_LOC, C_STICK_STRUCT
+
+setupPiece A_BTN_LOC, A_BTN_STRUCT
+setupPiece B_BTN_LOC, B_BTN_STRUCT
+setupPiece X_BTN_LOC, X_BTN_STRUCT
+setupPiece Y_BTN_LOC, Y_BTN_STRUCT
 
 b SETUP_DONE
 
