@@ -55,7 +55,7 @@ restore
 blr
 
 GET_CONTROLLER_DATA_STICK: # r3 is player slot
-load r10, 0x804c1fac # p1 controller location
+load r10, CONTROLLER_DATA_ADDRESS
 # main stick
 lfs f1, 0x20(r10)
 lfs f2, 0x24(r10)
@@ -64,22 +64,16 @@ lfs f3, 0x28(r10)
 lfs f4, 0x2c(r10)
 blr
 
-.macro andi reg_out, reg_num, value
-load REG_SCRATCH, \value
-and \reg_out, \reg_num, REG_SCRATCH
-.endm
-
 GET_CONTROLLER_DATA_BTN:
-load r10, 0x804c1fac
+load r10, CONTROLLER_DATA_ADDRESS
 lwz r14, 0x4(r10)
-andi r3, r14, 0x100 # a
-andi r4, r14, 0x200 # b
-andi r5, r14, 0x400 # x
-andi r6, r14, 0x800 # y
-
-andi r7, r14, 0x10 # Z
-andi r8, r14, 0x20 # R
-andi r9, r14, 0x40 # L
+andi r3, r14, 0x100, REG_SCRATCH # a
+andi r4, r14, 0x200, REG_SCRATCH # b
+andi r5, r14, 0x400, REG_SCRATCH # x
+andi r6, r14, 0x800, REG_SCRATCH # y
+andi r7, r14, 0x10, REG_SCRATCH # Z
+andi r8, r14, 0x20, REG_SCRATCH # R
+andi r9, r14, 0x40, REG_SCRATCH # L
 blr
 
 HANDLE_PIECE_STICK:

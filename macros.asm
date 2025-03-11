@@ -7,6 +7,11 @@ mullw \regout, \regdivisor, \regout
 sub \regout, \regnum, \regout
 .endm
 
+.macro andi reg_out, reg_num, value, regscratch
+li \regscratch, \value
+and \reg_out, \reg_num, \regscratch
+.endm
+
 .macro load reg, address
 lis \reg, \address @h
 ori \reg, \reg, \address @l

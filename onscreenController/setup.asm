@@ -60,7 +60,6 @@ bl SETUP_PIECE
 # build pieces
 setupPiece MAIN_STICK_LOC, MAIN_STICK_STRUCT
 setupPiece C_STICK_LOC, C_STICK_STRUCT
-
 setupPiece A_BTN_LOC, A_BTN_STRUCT
 setupPiece B_BTN_LOC, B_BTN_STRUCT
 setupPiece X_BTN_LOC, X_BTN_STRUCT
