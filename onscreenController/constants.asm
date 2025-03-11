@@ -32,5 +32,9 @@
 .set X_BTN_STRUCT, 0x8046b8c0
 .set Y_BTN_STRUCT, 0x8046b8c4
 
+.set L_BTN_STRUCT, 0x8046b8c8
+.set R_BTN_STRUCT, 0x8046b8cc
+.set Z_BTN_STRUCT, 0x8046b8e0
+
 
 

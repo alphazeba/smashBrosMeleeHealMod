@@ -11,9 +11,9 @@ blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.08
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float -4.0
+.float -3.0
 .set TEXT_Y, TEXT_X + 4
-.float 15.0
+.float 12.5
 .set TEXT_Z, TEXT_Y + 4
 .float 0.0
 .set MOVE_SCALE, TEXT_Z + 4
@@ -50,7 +50,7 @@ blrl
 .set TEXT_Z, TEXT_Y + 4
 .float 0.0
 .set MOVE_SCALE, TEXT_Z + 4
-.float 2.0
+.float 0.5
 .set TEXT, MOVE_SCALE + 4
 .string "A"
 .align 2
@@ -66,7 +66,7 @@ blrl
 .set TEXT_Z, TEXT_Y + 4
 .float 0.0
 .set MOVE_SCALE, TEXT_Z + 4
-.float 2.0
+.float 0.5
 .set TEXT, MOVE_SCALE + 4
 .string "B"
 .align 2
@@ -82,7 +82,7 @@ blrl
 .set TEXT_Z, TEXT_Y + 4
 .float 0.0
 .set MOVE_SCALE, TEXT_Z + 4
-.float 2.0
+.float 0.5
 .set TEXT, MOVE_SCALE + 4
 .string "x"
 .align 2
@@ -98,7 +98,55 @@ blrl
 .set TEXT_Z, TEXT_Y + 4
 .float 0.0
 .set MOVE_SCALE, TEXT_Z + 4
-.float 2.0
+.float 0.5
 .set TEXT, MOVE_SCALE + 4
 .string "y"
+.align 2
+
+L_BTN_LOC:
+blrl
+.set TEXT_CANVAS_SCALE, 0
+.float 0.04
+.set TEXT_X, TEXT_CANVAS_SCALE + 4
+.float -5.0
+.set TEXT_Y, TEXT_X + 4
+.float 10.0
+.set TEXT_Z, TEXT_Y + 4
+.float 0.0
+.set MOVE_SCALE, TEXT_Z + 4
+.float 0.5
+.set TEXT, MOVE_SCALE + 4
+.string "L"
+.align 2
+
+R_BTN_LOC:
+blrl
+.set TEXT_CANVAS_SCALE, 0
+.float 0.04
+.set TEXT_X, TEXT_CANVAS_SCALE + 4
+.float 9
+.set TEXT_Y, TEXT_X + 4
+.float 10.0
+.set TEXT_Z, TEXT_Y + 4
+.float 0.0
+.set MOVE_SCALE, TEXT_Z + 4
+.float 0.5
+.set TEXT, MOVE_SCALE + 4
+.string "R"
+.align 2
+
+Z_BTN_LOC:
+blrl
+.set TEXT_CANVAS_SCALE, 0
+.float 0.03
+.set TEXT_X, TEXT_CANVAS_SCALE + 4
+.float 6
+.set TEXT_Y, TEXT_X + 4
+.float 10.0
+.set TEXT_Z, TEXT_Y + 4
+.float 0.0
+.set MOVE_SCALE, TEXT_Z + 4
+.float 0.5
+.set TEXT, MOVE_SCALE + 4
+.string "Z"
 .align 2

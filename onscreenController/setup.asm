@@ -65,6 +65,9 @@ setupPiece A_BTN_LOC, A_BTN_STRUCT
 setupPiece B_BTN_LOC, B_BTN_STRUCT
 setupPiece X_BTN_LOC, X_BTN_STRUCT
 setupPiece Y_BTN_LOC, Y_BTN_STRUCT
+setupPiece L_BTN_LOC, L_BTN_STRUCT
+setupPiece R_BTN_LOC, R_BTN_STRUCT
+setupPiece Z_BTN_LOC, Z_BTN_STRUCT
 
 b SETUP_DONE
 

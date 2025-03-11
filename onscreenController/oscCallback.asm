@@ -28,7 +28,8 @@ bl C_STICK_LOC
 mflr r10
 bl HANDLE_PIECE_STICK
 
-.macro handleBtn loc, reg_btnPressed
+.macro handleBtn loc, reg_btnPressed, strct
+loadwz REG_TEXT_STRUCT, \strct
 bl \loc
 mflr r10
 mr r11, \reg_btnPressed
@@ -36,7 +37,14 @@ bl HANDLE_PIECE_BTN
 .endm
 
 bl GET_CONTROLLER_DATA_BTN
-handleBtn A_BTN_LOC, r3
+handleBtn A_BTN_LOC, r3, A_BTN_STRUCT
+handleBtn B_BTN_LOC, r4, B_BTN_STRUCT
+handleBtn X_BTN_LOC, r5, X_BTN_STRUCT
+handleBtn Y_BTN_LOC, r6, Y_BTN_STRUCT
+
+handleBtn L_BTN_LOC, r9, L_BTN_STRUCT
+handleBtn R_BTN_LOC, r8, R_BTN_STRUCT
+handleBtn Z_BTN_LOC, r7, Z_BTN_STRUCT
 
 # Draw camera
 mr r3, REG_GOBJ
@@ -98,11 +106,11 @@ lfs f7, TEXT_Z(r10)
 lfs f8, TEXT_CANVAS_SCALE(r10)
 lfs f9, MOVE_SCALE(r10)
 
-cmpwi r10, 0
-beq BTN_NOT_PRESSED
+cmpwi r11, 0
+bne BTN_IS_PRESSED
 
-fadds f6, f6, f9
+fsubs f6, f6, f9
 
-BTN_NOT_PRESSED:
+BTN_IS_PRESSED:
 setTextPosScale REG_TEXT_STRUCT, f5, f6, f7, f8
 blr
