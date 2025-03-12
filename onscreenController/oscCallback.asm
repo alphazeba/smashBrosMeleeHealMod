@@ -61,8 +61,12 @@ COBJ_CB_Exit:
 restore
 blr
 
-GET_CONTROLLER_DATA_STICK: # r3 is player slot
-load r10, CONTROLLER_DATA_ADDRESS
+.macro getControllerDataAddress regOut
+offsetaddr \regOut, REG_SCRATCH, CONTROLLER_DATA_ADDRESS, CONTROLLER_DATA_OFFSET, REG_PLAYER_INDEX
+.endm
+
+GET_CONTROLLER_DATA_STICK:
+getControllerDataAddress r10
 # main stick
 lfs f1, 0x20(r10)
 lfs f2, 0x24(r10)
@@ -72,7 +76,7 @@ lfs f4, 0x2c(r10)
 blr
 
 GET_CONTROLLER_DATA_BTN:
-load r10, CONTROLLER_DATA_ADDRESS
+getControllerDataAddress r10
 lwz r14, 0x4(r10)
 andi r3, r14, 0x100, REG_SCRATCH # a
 andi r4, r14, 0x200, REG_SCRATCH # b

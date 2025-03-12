@@ -27,7 +27,7 @@
 .set FRAME_COUNTER_ADDRESS, 0x80479d60
 
 .set CONTROLLER_DATA_ADDRESS, 0x804c1fac
-.set CONTROLLER_DATA_OFFSET, 0x42069 # i don't know the answer for this atm. probably 0xe90 honeslty
+.set CONTROLLER_DATA_OFFSET, 0x44 # i don't know the answer for this atm. probably 0xe90 honeslty
 
 .set CONTROLLER_VISUAL_ADDR, 0x8046b790
 .set CONTROLLER_VISUAL_OFFSET, 36
