@@ -34,7 +34,7 @@ bl HANDLE_PIECE_STICK
 HANDLE_PIECE_STICK:
 lfs f5, TEXT_X(r10)
 lfs f6, TEXT_Y(r10)
-lfs f7, TEXT_Z(r10)
+lfs f7, FLOAT_ZERO(REG_DATA_ADDR) #
 lfs f8, TEXT_CANVAS_SCALE(r10)
 lfs f9, MOVE_SCALE(r10)
 # scale the stick movement
@@ -44,8 +44,7 @@ fmuls f2, f2, f9
 fadds f5, f5, f10
 fadds f5, f5, f1
 fsubs f6, f6, f2
-setTextPosScale REG_TEXT_STRUCT, f5, f6, f7, f8
-blr
+b SET_TEXT_POS_SCALE_AND_BLR
 
 .macro handleBtn reg_btnPressed, loc, strct
 loadTextStruct r10, \strct
@@ -59,7 +58,7 @@ bl HANDLE_PIECE_BTN
 HANDLE_PIECE_BTN:
 lfs f5, TEXT_X(r10)
 lfs f6, TEXT_Y(r10)
-lfs f7, TEXT_Z(r10)
+lfs f7, FLOAT_ZERO(REG_DATA_ADDR) # z
 lfs f8, TEXT_CANVAS_SCALE(r10)
 lfs f9, MOVE_SCALE(r10)
 # scooch by hud nametag offset
@@ -74,10 +73,19 @@ b BTN_SET_VALUES
 BTN_IS_PRESSED:
 li r3, PRESSED_OPACITY
 BTN_SET_VALUES:
-setTextPosScale REG_TEXT_STRUCT, f5, f6, f7, f8
 stb r3, TEXT_STRUCT_OPACITY_BYTE_OFFSET(REG_TEXT_STRUCT)
-blr
+b SET_TEXT_POS_SCALE_AND_BLR
 
+.macro setTextPosScale textStruct, x, y, z, s
+stfs \x, 0x0(\textStruct)
+stfs \y, 0x4(\textStruct)
+stfs \z, 0x8(\textStruct)
+stfs \s, 0x24(\textStruct)
+stfs \s, 0x28(\textStruct)
+.endm
+SET_TEXT_POS_SCALE_AND_BLR:
+setTextPosScale REG_TEXT_STRUCT, f5, f6, f7, f8
+blr
 
 #### begin callback
 COBJ_CB:
@@ -91,6 +99,9 @@ mr REG_GOBJ, r3
 lbz	r0, -0x4934 (r13)
 cmpwi r0, 1
 beq COBJ_CB_Exit
+
+bl DATA_LOC
+mflr REG_DATA_ADDR
 
 # start per player loop
 li REG_PLAYER_INDEX, 0

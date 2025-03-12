@@ -90,7 +90,15 @@ blt+ SETUP_PLAYER
 
 b SETUP_DONE
 
-.macro buildText
+# r3 piece data loc
+# r4 player
+# r5 save location
+SETUP_PIECE:
+backup
+mr r15, r3
+mr r14, r5
+# build text object
+# do it twice so there is a shadow showing the unmoved location
 mr r10, r15
 li r3, 2
 mr r4, REG_CANVAS 
@@ -109,22 +117,6 @@ lfs f2, FLOAT_ZERO(REG_DATA_ADDR)
 mr r3, REG_TEXT_STRUCT
 addi r4, r10, TEXT
 branchl REG_SCRATCH, Text_InitializeSubtext
-.endm
-
-# r3 piece data loc
-# r4 player
-# r5 save location
-SETUP_PIECE:
-backup
-mr r15, r3
-mr r14, r5
-# build text object
-# do it twice so there is a shadow showing the unmoved location
-buildText
-# buildText
-# it seems there is a limit to the number of things that can be created.
-# building each letter twice is too many things.
-# potentially could be fixed by having seperate canvas per player?
 
 # save the text struct
 stw REG_TEXT_STRUCT, 0(r14)

@@ -2,10 +2,8 @@ DATA_LOC:
 blrl
 .set FLOAT_ZERO, 0
 .float 0.0
-.set FLOAT_ONE, FLOAT_ZERO + 4
-.float 1.0
-.set PLAYER_X_OFFSET, FLOAT_ONE + 4
-.float 10.0
+# .set FLOAT_ONE, FLOAT_ZERO + 4
+# .float 1.0
 
 MAIN_STICK_LOC:
 blrl
@@ -15,9 +13,7 @@ blrl
 .float -3.5
 .set TEXT_Y, TEXT_X + 4
 .float 12.5
-.set TEXT_Z, TEXT_Y + 4
-.float 0.0
-.set MOVE_SCALE, TEXT_Z + 4
+.set MOVE_SCALE, TEXT_Y + 4
 .float 1.0
 .set TEXT, MOVE_SCALE + 4
 .string "o"
@@ -31,9 +27,7 @@ blrl
 .float 1
 .set TEXT_Y, TEXT_X + 4
 .float 13
-.set TEXT_Z, TEXT_Y + 4
-.float 0.0
-.set MOVE_SCALE, TEXT_Z + 4
+.set MOVE_SCALE, TEXT_Y + 4
 .float 1
 .set TEXT, MOVE_SCALE + 4
 .string "o"
@@ -48,9 +42,7 @@ blrl
 .float 5
 .set TEXT_Y, TEXT_X + 4
 .float 14.0
-.set TEXT_Z, TEXT_Y + 4
-.float 0.0
-.set MOVE_SCALE, TEXT_Z + 4
+.set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
 .string "A"
@@ -64,9 +56,7 @@ blrl
 .float 3.5
 .set TEXT_Y, TEXT_X + 4
 .float 15
-.set TEXT_Z, TEXT_Y + 4
-.float 0.0
-.set MOVE_SCALE, TEXT_Z + 4
+.set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
 .string "B"
@@ -80,9 +70,7 @@ blrl
 .float 6
 .set TEXT_Y, TEXT_X + 4
 .float 13.0
-.set TEXT_Z, TEXT_Y + 4
-.float 0.0
-.set MOVE_SCALE, TEXT_Z + 4
+.set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
 .string "x"
@@ -96,9 +84,7 @@ blrl
 .float 5
 .set TEXT_Y, TEXT_X + 4
 .float 12.5
-.set TEXT_Z, TEXT_Y + 4
-.float 0.0
-.set MOVE_SCALE, TEXT_Z + 4
+.set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
 .string "y"
@@ -112,9 +98,7 @@ blrl
 .float -1.5
 .set TEXT_Y, TEXT_X + 4
 .float 12.0
-.set TEXT_Z, TEXT_Y + 4
-.float 0.0
-.set MOVE_SCALE, TEXT_Z + 4
+.set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
 .string "L"
@@ -128,9 +112,7 @@ blrl
 .float 2.5
 .set TEXT_Y, TEXT_X + 4
 .float 12.0
-.set TEXT_Z, TEXT_Y + 4
-.float 0.0
-.set MOVE_SCALE, TEXT_Z + 4
+.set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
 .string "R"
@@ -144,9 +126,7 @@ blrl
 .float 1
 .set TEXT_Y, TEXT_X + 4
 .float 12.0
-.set TEXT_Z, TEXT_Y + 4
-.float 0.0
-.set MOVE_SCALE, TEXT_Z + 4
+.set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
 .string "Z"

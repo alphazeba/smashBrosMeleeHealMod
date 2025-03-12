@@ -3,14 +3,6 @@
 
 b START
 
-.macro setTextPosScale textStruct, x, y, z, s
-stfs \x, 0x0(\textStruct)
-stfs \y, 0x4(\textStruct)
-stfs \z, 0x8(\textStruct)
-stfs \s, 0x24(\textStruct)
-stfs \s, 0x28(\textStruct)
-.endm
-
 .macro loadTextAddr regOut, structOffset
 offsetaddr REG_SCRATCH, \regOut, CONTROLLER_VISUAL_ADDR, CONTROLLER_VISUAL_OFFSET, REG_PLAYER_INDEX
 load \regOut, \structOffset
