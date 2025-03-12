@@ -13,7 +13,7 @@ blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.08
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float -1.5
+.float -3.5
 .set TEXT_Y, TEXT_X + 4
 .float 12.5
 .set TEXT_Z, TEXT_Y + 4
@@ -29,9 +29,9 @@ blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.07
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float 2
+.float 1
 .set TEXT_Y, TEXT_X + 4
-.float 17.0
+.float 13
 .set TEXT_Z, TEXT_Y + 4
 .float 0.0
 .set MOVE_SCALE, TEXT_Z + 4
@@ -46,7 +46,7 @@ blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.04
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float 3
+.float 5
 .set TEXT_Y, TEXT_X + 4
 .float 14.0
 .set TEXT_Z, TEXT_Y + 4
@@ -62,7 +62,7 @@ blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.03
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float 1.5
+.float 3.5
 .set TEXT_Y, TEXT_X + 4
 .float 15
 .set TEXT_Z, TEXT_Y + 4
@@ -78,7 +78,7 @@ blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.03
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float 4
+.float 6
 .set TEXT_Y, TEXT_X + 4
 .float 13.0
 .set TEXT_Z, TEXT_Y + 4
@@ -94,9 +94,9 @@ blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.03
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float 3
+.float 5
 .set TEXT_Y, TEXT_X + 4
-.float 12.0
+.float 12.5
 .set TEXT_Z, TEXT_Y + 4
 .float 0.0
 .set MOVE_SCALE, TEXT_Z + 4
@@ -110,9 +110,9 @@ blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.04
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float -2.5
+.float -1.5
 .set TEXT_Y, TEXT_X + 4
-.float 10.0
+.float 12.0
 .set TEXT_Z, TEXT_Y + 4
 .float 0.0
 .set MOVE_SCALE, TEXT_Z + 4
@@ -126,9 +126,9 @@ blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.04
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float 4.5
+.float 2.5
 .set TEXT_Y, TEXT_X + 4
-.float 10.0
+.float 12.0
 .set TEXT_Z, TEXT_Y + 4
 .float 0.0
 .set MOVE_SCALE, TEXT_Z + 4
@@ -142,9 +142,9 @@ blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.03
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float 3
+.float 1
 .set TEXT_Y, TEXT_X + 4
-.float 10.0
+.float 12.0
 .set TEXT_Z, TEXT_Y + 4
 .float 0.0
 .set MOVE_SCALE, TEXT_Z + 4
