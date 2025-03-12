@@ -22,6 +22,14 @@ loadTextAddr \regSecondScratch, \structOffset
 lwz REG_TEXT_STRUCT, 0(\regSecondScratch)
 .endm
 
+# .set NAME_TAG_BASE_X, 0x80453080 + 0x10
+# .set PLAYER_BLOCK_OFFSET, 0xe90
+.macro getNameTagXfloat fregOut, regSecondaryScratch
+mr r3, REG_PLAYER_INDEX
+branchl REG_SCRATCH, 0x802f3424
+# HUD X
+lfs \fregOut, 0x0(r3)
+.endm
 
 .include "./onscreenController/oscData.asm"
 .include "./onscreenController/constants.asm"

@@ -41,4 +41,3 @@
 .set L_BTN_STRUCT, 24
 .set R_BTN_STRUCT, 28
 .set Z_BTN_STRUCT, 32
-
