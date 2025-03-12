@@ -101,17 +101,7 @@ stb r3, 0x48(REG_TEXT_STRUCT) # Fixed Width
 stb r3, 0x4A(REG_TEXT_STRUCT) # Set text to align center
 stb r3, 0x4C(REG_TEXT_STRUCT) # Unk?
 stb r3, 0x49(REG_TEXT_STRUCT) # kerning?
-# set position
-lfs f1, TEXT_X(r10)
-lfs f2, TEXT_Y(r10)
-lfs f3, TEXT_Z(r10)
-lfs f4, TEXT_CANVAS_SCALE(r10)
-# scooch x by player offset
-lfs f5, PLAYER_X_OFFSET(REG_DATA_ADDR)
-# fmuls f5, f5, REG_PL
-# TODO convert the player index register into a float and multiply the offset with it.
-# fadds f1, f1, f5
-setTextPosScale REG_TEXT_STRUCT, f1, f2, f3, f4
+#don't need to set position of the text because we update it every frame
 # set text on the struct
 crset 6
 lfs f1, FLOAT_ZERO(REG_DATA_ADDR)

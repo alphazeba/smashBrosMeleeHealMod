@@ -41,3 +41,8 @@
 .set L_BTN_STRUCT, 24
 .set R_BTN_STRUCT, 28
 .set Z_BTN_STRUCT, 32
+
+# text struct + 0x8f offset is where opacity is stored.
+.set TEXT_STRUCT_OPACITY_BYTE_OFFSET, 0x8f
+.set UNPRESSED_OPACITY, 0x4f
+.set PRESSED_OPACITY, 0xff
