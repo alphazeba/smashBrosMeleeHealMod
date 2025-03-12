@@ -7,7 +7,6 @@ blrl
 .set PLAYER_X_OFFSET, FLOAT_ONE + 4
 .float 10.0
 
-
 MAIN_STICK_LOC:
 blrl
 .set TEXT_CANVAS_SCALE, 0
