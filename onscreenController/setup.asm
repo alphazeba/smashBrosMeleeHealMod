@@ -57,6 +57,9 @@ loadTextAddr r5, \strct
 bl SETUP_PIECE
 .endm
 
+li REG_PLAYER_INDEX, 0
+
+SETUP_PLAYER:
 # build pieces
 setupPiece MAIN_STICK_LOC, MAIN_STICK_STRUCT
 setupPiece C_STICK_LOC, C_STICK_STRUCT
@@ -68,6 +71,10 @@ setupPiece L_BTN_LOC, L_BTN_STRUCT
 setupPiece R_BTN_LOC, R_BTN_STRUCT
 setupPiece Z_BTN_LOC, Z_BTN_STRUCT
 
+addi REG_PLAYER_INDEX, REG_PLAYER_INDEX, 1
+cmpwi REG_PLAYER_INDEX, 4
+blt SETUP_PLAYER
+
 b SETUP_DONE
 
 .macro buildText
@@ -76,23 +83,26 @@ li r3, 2
 mr r4, REG_CANVAS 
 branchl REG_SCRATCH, Text_CreateStruct
 mr REG_TEXT_STRUCT, r3
-
 li r3, 0x1
 stb r3, 0x48(REG_TEXT_STRUCT) # Fixed Width
 stb r3, 0x4A(REG_TEXT_STRUCT) # Set text to align center
 stb r3, 0x4C(REG_TEXT_STRUCT) # Unk?
 stb r3, 0x49(REG_TEXT_STRUCT) # kerning?
-
 # set position
 lfs f1, TEXT_X(r10)
 lfs f2, TEXT_Y(r10)
 lfs f3, TEXT_Z(r10)
 lfs f4, TEXT_CANVAS_SCALE(r10)
+# scooch x by player offset
+lfs f5, PLAYER_X_OFFSET(REG_DATA_ADDR)
+# fmuls f5, f5, REG_PL
+# TODO convert the player index register into a float and multiply the offset with it.
+# fadds f1, f1, f5
 setTextPosScale REG_TEXT_STRUCT, f1, f2, f3, f4
 # set text on the struct
 crset 6
 lfs f1, FLOAT_ZERO(REG_DATA_ADDR)
-lfs f1, FLOAT_ZERO(REG_DATA_ADDR)
+lfs f2, FLOAT_ZERO(REG_DATA_ADDR)
 mr r3, REG_TEXT_STRUCT
 addi r4, r10, TEXT
 branchl REG_SCRATCH, Text_InitializeSubtext
@@ -108,7 +118,10 @@ mr r14, r5
 # build text object
 # do it twice so there is a shadow showing the unmoved location
 buildText
-buildText
+# buildText
+# it seems there is a limit to the number of things that can be created.
+# building each letter twice is too many things.
+# potentially could be fixed by having seperate canvas per player?
 
 # save the text struct
 stw REG_TEXT_STRUCT, 0(r14)

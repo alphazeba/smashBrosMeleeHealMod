@@ -4,6 +4,8 @@ blrl
 .float 0.0
 .set FLOAT_ONE, FLOAT_ZERO + 4
 .float 1.0
+.set PLAYER_X_OFFSET, FLOAT_ONE + 4
+.float 10.0
 
 
 MAIN_STICK_LOC:

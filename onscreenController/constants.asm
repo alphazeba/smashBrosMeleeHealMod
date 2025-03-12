@@ -20,6 +20,7 @@
 .set REG_CANVAS, 27
 .set REG_COBJ, 26 # camero obj?
 .set REG_GOBJ, 25 # game obj?
+.set REG_PLAYER_INDEX, 24
 
 .set REG_SCRATCH, 12
 
