@@ -12,8 +12,7 @@ stfs \s, 0x28(\textStruct)
 .endm
 
 .macro loadTextAddr regOut, structOffset
-load REG_SCRATCH, CONTROLLER_VISUAL_ADDR
-# TODO offset by player index.
+offsetaddr REG_SCRATCH, \regOut, CONTROLLER_VISUAL_ADDR, CONTROLLER_VISUAL_OFFSET, REG_PLAYER_INDEX
 load \regOut, \structOffset
 add \regOut, \regOut, REG_SCRATCH
 .endm
