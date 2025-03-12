@@ -66,6 +66,19 @@ mullw \regb, \regb, \regi
 add \reg, \reg, \regb
 .endm
 
+########
+# player static block
+.set STATIC_BLOCK_ADDRESS, 0x80453080
+.set STATIC_BLOCK_OFFSET, 0xe90
+.set STATIC_BLOCK_PERCENT_VISUAL_OFFSET, 0x60
+.set STATIC_BLOCK_PLAYER_STOCK_OFFSET, 0x8e
+.set STATIC_BLOCK_PLAYER_TYPE_OFFSET, 0x0a
+.set STATIC_BLOCK_AMOUNT_HEALED_OFFSET, 0xd24
+.set STATIC_BLOCK_HIT_COOLDOWN_OFFSET, 0x61
+
+.set PLAYER_TYPE_NONE, 0x3
+########
+
 #########
 # player data
 .set STATIC_ENTITY_ADDRESS, 0x80453130
