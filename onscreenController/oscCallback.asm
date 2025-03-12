@@ -49,7 +49,7 @@ handleBtn L_BTN_LOC, r9, L_BTN_STRUCT
 handleBtn R_BTN_LOC, r8, R_BTN_STRUCT
 handleBtn Z_BTN_LOC, r7, Z_BTN_STRUCT
 
-UPDATE_PLAYER_CONTROLLER_DONE:
+DONE_HANDLING_PLAYER:
 addi REG_PLAYER_INDEX, REG_PLAYER_INDEX, 1
 cmpwi REG_PLAYER_INDEX, 4
 blt+ UPDATE_PLAYER_CONTROLLER
@@ -67,18 +67,18 @@ offsetaddr \regOut, REG_SCRATCH, CONTROLLER_DATA_ADDRESS, CONTROLLER_DATA_OFFSET
 .endm
 
 GET_CONTROLLER_DATA_STICK:
-getControllerDataAddress r10
+loadplayerdatapointer r10, REG_SCRATCH, REG_PLAYER_INDEX
 # main stick
-lfs f1, 0x20(r10)
-lfs f2, 0x24(r10)
+lfs f1, 0x620(r10)
+lfs f2, 0x624(r10)
 # c stick
-lfs f3, 0x28(r10)
-lfs f4, 0x2c(r10)
+lfs f3, 0x638(r10)
+lfs f4, 0x63C(r10)
 blr
 
 GET_CONTROLLER_DATA_BTN:
-getControllerDataAddress r10
-lwz r14, 0x4(r10)
+loadplayerdatapointer r10, REG_SCRATCH, REG_PLAYER_INDEX
+lwz r14, 0x65c(r10)
 andi r3, r14, 0x100, REG_SCRATCH # a
 andi r4, r14, 0x200, REG_SCRATCH # b
 andi r5, r14, 0x400, REG_SCRATCH # x

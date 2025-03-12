@@ -66,6 +66,21 @@ mullw \regb, \regb, \regi
 add \reg, \reg, \regb
 .endm
 
+#########
+# player data
+.set STATIC_ENTITY_ADDRESS, 0x80453130
+.set STATIC_ENTITY_OFFSET, 0xe90
+.set STATIC_ENTITY_DATA_POINTER_OFFSET, 0x2c
+.set DATA_POINTER_PERCENT_OFFSET, 0x1830
+.set DATA_POINTER_LAST_HIT_OFFSET, 0x18AC
+
+.macro loadplayerdatapointer reg, regscratch, regplayer
+offsetaddr \reg, \regscratch, STATIC_ENTITY_ADDRESS, STATIC_ENTITY_OFFSET, \regplayer
+followp \reg, \regscratch 0
+followp \reg, \regscratch STATIC_ENTITY_DATA_POINTER_OFFSET
+.endm
+#########
+
 .set BKP_DEFAULT_FREE_SPACE_SIZE, 0xA8
 .set BKP_DEFAULT_FREG, 0
 .set BKP_DEFAULT_REG, 12
