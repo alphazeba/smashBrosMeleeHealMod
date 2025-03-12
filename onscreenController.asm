@@ -11,6 +11,17 @@ stfs \s, 0x24(\textStruct)
 stfs \s, 0x28(\textStruct)
 .endm
 
+.macro loadTextAddr regOut, structOffset
+load \regOut, \structOffset
+.endm
+
+.macro loadTextStruct regSecondScratch, structOffset
+# load \regSecondScratch, \structOffset
+# getControllerPieceAddr REG_TEXT_STRUCT, REG_SCRATCH, REG_PLAYER_INDEX, \regSecondScratch
+# lwz REG_TEXT_STRUCT, 0(REG_TEXT_STRUCT)
+.endm
+
+
 .include "./onscreenController/oscData.asm"
 .include "./onscreenController/constants.asm"
 .include "./onscreenController/oscCallback.asm"

@@ -53,7 +53,7 @@ mr REG_CANVAS, r3
 bl \loc
 mflr r3
 li r4, 0
-load r5, \strct
+loadTextAddr r5, \strct
 bl SETUP_PIECE
 .endm
 
