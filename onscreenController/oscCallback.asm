@@ -16,20 +16,20 @@ bl GET_CONTROLLER_DATA_STICK
 fmr f14, f3
 fmr f15, f4
 
-loadwz REG_TEXT_STRUCT, MAIN_STICK_STRUCT
+loadTextStruct r3, MAIN_STICK_STRUCT
 bl MAIN_STICK_LOC
 mflr r10
 bl HANDLE_PIECE_STICK
 
 fmr f1, f14
 fmr f2, f15
-loadwz REG_TEXT_STRUCT, C_STICK_STRUCT
+loadTextStruct r3, C_STICK_STRUCT
 bl C_STICK_LOC
 mflr r10
 bl HANDLE_PIECE_STICK
 
 .macro handleBtn loc, reg_btnPressed, strct
-loadwz REG_TEXT_STRUCT, \strct
+loadTextStruct r10, \strct
 bl \loc
 mflr r10
 mr r11, \reg_btnPressed

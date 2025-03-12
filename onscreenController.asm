@@ -19,6 +19,8 @@ load \regOut, \structOffset
 # load \regSecondScratch, \structOffset
 # getControllerPieceAddr REG_TEXT_STRUCT, REG_SCRATCH, REG_PLAYER_INDEX, \regSecondScratch
 # lwz REG_TEXT_STRUCT, 0(REG_TEXT_STRUCT)
+loadTextAddr \regSecondScratch, \structOffset
+lwz REG_TEXT_STRUCT, 0(\regSecondScratch)
 .endm
 
 
