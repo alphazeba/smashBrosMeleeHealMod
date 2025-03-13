@@ -23,9 +23,23 @@ branchl REG_SCRATCH, 0x802f3424
 lfs \fregOut, 0x0(r3)
 .endm
 
-.include "./onscreenController/oscData.asm"
+.macro loadPieceData
+mflr r0
+bl LOAD_PIECE_DATA
+mtlr r0
+.endm
+# r10 is loc addr
+LOAD_PIECE_DATA:
+lfs f5, TEXT_X(r10)
+lfs f6, TEXT_Y(r10)
+lfs f7, FLOAT_ZERO(REG_DATA_ADDR)
+lfs f8, TEXT_CANVAS_SCALE(r10)
+lfs f9, MOVE_SCALE(r10)
+blr
+
+.include "./onscreenController/data.asm"
 .include "./onscreenController/constants.asm"
-.include "./onscreenController/oscCallback.asm"
+.include "./onscreenController/callback.asm"
 .include "./onscreenController/setup.asm"
 
 START:

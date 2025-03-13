@@ -1,3 +1,4 @@
+
 SETUP:
 mflr r30
 # get data address
@@ -86,12 +87,10 @@ setupPiece R_BTN_LOC, R_BTN_STRUCT
 setupPiece Z_BTN_LOC, Z_BTN_STRUCT
 # GO_STRAIGHT_HERE:
 ## background
-#Create gobj
-# COPY AND PASTE WOREKD? MAYBE MY OFFSET THING DIDN"T WORK
+# Create gobj
 li  r3,14
 li  r4,15
 li  r5,0
-# getNameTagXfloat (did this not work?)
 branchl r12,0x803901f0
 .set REG_BG_GOBJ, 23
 mr  REG_BG_GOBJ,r3
@@ -169,11 +168,9 @@ b SETUP_DONE
 # r5 save location
 SETUP_PIECE:
 backup
-mr r15, r3
+mr r10, r3
 mr r14, r5
 # build text object
-# do it twice so there is a shadow showing the unmoved location
-mr r10, r15
 li r3, 2
 mr r4, REG_CANVAS 
 branchl REG_SCRATCH, Text_CreateStruct
@@ -197,3 +194,8 @@ stw REG_TEXT_STRUCT, 0(r14)
 restore
 blr
 
+PLACE_BACKDROP_STICK:
+loadPieceData
+li r3, PRESSED_OPACITY
+stb r3, TEXT_STRUCT_OPACITY_BYTE_OFFSET(REG_TEXT_STRUCT)
+b SET_TEXT_POS_SCALE_AND_BLR

@@ -32,11 +32,7 @@ bl HANDLE_PIECE_STICK
 # f1,f2 is input stick x,y
 # r10 is loc address
 HANDLE_PIECE_STICK:
-lfs f5, TEXT_X(r10)
-lfs f6, TEXT_Y(r10)
-lfs f7, FLOAT_ZERO(REG_DATA_ADDR) #
-lfs f8, TEXT_CANVAS_SCALE(r10)
-lfs f9, MOVE_SCALE(r10)
+loadPieceData
 # scale the stick movement
 fmuls f1, f1, f9
 fmuls f2, f2, f9
@@ -56,11 +52,7 @@ bl HANDLE_PIECE_BTN
 # r11 is btn data
 # r10 is loc address
 HANDLE_PIECE_BTN:
-lfs f5, TEXT_X(r10)
-lfs f6, TEXT_Y(r10)
-lfs f7, FLOAT_ZERO(REG_DATA_ADDR) # z
-lfs f8, TEXT_CANVAS_SCALE(r10)
-lfs f9, MOVE_SCALE(r10)
+loadPieceData
 # scooch by hud nametag offset
 fadds f5, f5, f10
 # branch on whether button is pressed
