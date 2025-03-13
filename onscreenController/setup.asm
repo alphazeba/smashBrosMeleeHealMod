@@ -1,3 +1,54 @@
+.macro setupPiece loc, strct, place_bool
+bl \loc
+mflr r3
+li r4, 0
+loadTextAddr r5, \strct
+li r6, \place_bool
+bl SETUP_PIECE
+.endm
+# r3 piece data loc
+# r4 player
+# r5 save location
+SETUP_PIECE:
+backup
+mr r16, r3
+mr r14, r5
+mr r15, r6
+# build text object
+li r3, 2
+mr r4, REG_CANVAS 
+branchl REG_SCRATCH, Text_CreateStruct
+mr REG_TEXT_STRUCT, r3
+li r3, 0x1
+stb r3, 0x48(REG_TEXT_STRUCT) # Fixed Width
+stb r3, 0x4A(REG_TEXT_STRUCT) # Set text to align center
+stb r3, 0x4C(REG_TEXT_STRUCT) # Unk?
+stb r3, 0x49(REG_TEXT_STRUCT) # kerning?
+
+cmpwi r15, 0
+beq+ DONT_PLACE_IT
+# if we are placing it is because it is a backdrop piece
+mr r10, r16
+loadPieceData
+getNameTagXfloat f1, r3
+fadds f5, f5, f1
+setTextPosScale REG_TEXT_STRUCT, f5, f6, f7, f8
+li r3, UNPRESSED_OPACITY
+stb r3, TEXT_STRUCT_OPACITY_BYTE_OFFSET(REG_TEXT_STRUCT)
+
+DONT_PLACE_IT:
+# don't need to set position of the text because we update it every frame
+# set text on the struct
+crset 6
+lfs f1, FLOAT_ZERO(REG_DATA_ADDR)
+lfs f2, FLOAT_ZERO(REG_DATA_ADDR)
+mr r3, REG_TEXT_STRUCT
+addi r4, r16, TEXT
+branchl REG_SCRATCH, Text_InitializeSubtext
+# save the text struct
+stw REG_TEXT_STRUCT, 0(r14)
+restore
+blr
 
 SETUP:
 mflr r30
@@ -52,14 +103,6 @@ li r10, COBJ_GXPRI
 branchl REG_SCRATCH, 0x803a611c
 mr REG_CANVAS, r3
 
-.macro setupPiece loc, strct
-bl \loc
-mflr r3
-li r4, 0
-loadTextAddr r5, \strct
-bl SETUP_PIECE
-.endm
-
 li REG_PLAYER_INDEX, 0
 
 SETUP_PLAYER:
@@ -76,15 +119,17 @@ b SETUP_PLAYER_DONE
 
 PLAYER_IS_PRESENT:
 # build pieces
-setupPiece MAIN_STICK_LOC, MAIN_STICK_STRUCT
-setupPiece C_STICK_LOC, C_STICK_STRUCT
-setupPiece A_BTN_LOC, A_BTN_STRUCT
-setupPiece B_BTN_LOC, B_BTN_STRUCT
-setupPiece X_BTN_LOC, X_BTN_STRUCT
-setupPiece Y_BTN_LOC, Y_BTN_STRUCT
-setupPiece L_BTN_LOC, L_BTN_STRUCT
-setupPiece R_BTN_LOC, R_BTN_STRUCT
-setupPiece Z_BTN_LOC, Z_BTN_STRUCT
+setupPiece MAIN_STICK_LOC, MAIN_STICK_STRUCT, 1
+setupPiece C_STICK_LOC, C_STICK_STRUCT, 1
+setupPiece MAIN_STICK_LOC, MAIN_STICK_STRUCT, 0
+setupPiece C_STICK_LOC, C_STICK_STRUCT, 0
+setupPiece A_BTN_LOC, A_BTN_STRUCT, 0
+setupPiece B_BTN_LOC, B_BTN_STRUCT, 0
+setupPiece X_BTN_LOC, X_BTN_STRUCT, 0
+setupPiece Y_BTN_LOC, Y_BTN_STRUCT, 0
+setupPiece L_BTN_LOC, L_BTN_STRUCT, 0
+setupPiece R_BTN_LOC, R_BTN_STRUCT, 0
+setupPiece Z_BTN_LOC, Z_BTN_STRUCT, 0
 # GO_STRAIGHT_HERE:
 ## background
 # Create gobj
@@ -162,40 +207,3 @@ cmpwi REG_PLAYER_INDEX, 4
 blt+ SETUP_PLAYER
 
 b SETUP_DONE
-
-# r3 piece data loc
-# r4 player
-# r5 save location
-SETUP_PIECE:
-backup
-mr r10, r3
-mr r14, r5
-# build text object
-li r3, 2
-mr r4, REG_CANVAS 
-branchl REG_SCRATCH, Text_CreateStruct
-mr REG_TEXT_STRUCT, r3
-li r3, 0x1
-stb r3, 0x48(REG_TEXT_STRUCT) # Fixed Width
-stb r3, 0x4A(REG_TEXT_STRUCT) # Set text to align center
-stb r3, 0x4C(REG_TEXT_STRUCT) # Unk?
-stb r3, 0x49(REG_TEXT_STRUCT) # kerning?
-#don't need to set position of the text because we update it every frame
-# set text on the struct
-crset 6
-lfs f1, FLOAT_ZERO(REG_DATA_ADDR)
-lfs f2, FLOAT_ZERO(REG_DATA_ADDR)
-mr r3, REG_TEXT_STRUCT
-addi r4, r10, TEXT
-branchl REG_SCRATCH, Text_InitializeSubtext
-
-# save the text struct
-stw REG_TEXT_STRUCT, 0(r14)
-restore
-blr
-
-PLACE_BACKDROP_STICK:
-loadPieceData
-li r3, PRESSED_OPACITY
-stb r3, TEXT_STRUCT_OPACITY_BYTE_OFFSET(REG_TEXT_STRUCT)
-b SET_TEXT_POS_SCALE_AND_BLR
