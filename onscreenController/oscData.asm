@@ -5,13 +5,13 @@ blrl
 .set BG_X, FLOAT_ZERO + 4
 .float 1
 .set BG_Y, BG_X + 4
-.float -19.5
+.float -29
 .set BG_W, BG_Y + 4
 .float 2
 .set BG_H, BG_W + 4
 .float 1.95
 .set BG_OPACITY, BG_H + 4
-.float 0.33
+.float 0.7
 .set BG_COLOR, BG_OPACITY + 4
 .byte 0,0,0,255
 
@@ -22,7 +22,7 @@ blrl
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
 .float -3
 .set TEXT_Y, TEXT_X + 4
-.float 11.5
+.float 20.5
 .set MOVE_SCALE, TEXT_Y + 4
 .float 1.0
 .set TEXT, MOVE_SCALE + 4
@@ -36,7 +36,7 @@ blrl
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
 .float 0
 .set TEXT_Y, TEXT_X + 4
-.float 11.5
+.float 20.5
 .set MOVE_SCALE, TEXT_Y + 4
 .float 1
 .set TEXT, MOVE_SCALE + 4
@@ -50,7 +50,7 @@ blrl
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
 .float 4.5
 .set TEXT_Y, TEXT_X + 4
-.float 13
+.float 22.5
 .set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
@@ -64,7 +64,7 @@ blrl
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
 .float 3
 .set TEXT_Y, TEXT_X + 4
-.float 14
+.float 23
 .set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
@@ -78,7 +78,7 @@ blrl
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
 .float 5.5
 .set TEXT_Y, TEXT_X + 4
-.float 12
+.float 21.5
 .set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
@@ -92,7 +92,7 @@ blrl
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
 .float 4.5
 .set TEXT_Y, TEXT_X + 4
-.float 11.5
+.float 21
 .set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
@@ -102,11 +102,11 @@ blrl
 L_BTN_LOC:
 blrl
 .set TEXT_CANVAS_SCALE, 0
-.float 0.04
+.float 0.03
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
 .float -3
 .set TEXT_Y, TEXT_X + 4
-.float 12.0
+.float 21.5
 .set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
@@ -116,11 +116,11 @@ blrl
 R_BTN_LOC:
 blrl
 .set TEXT_CANVAS_SCALE, 0
-.float 0.04
+.float 0.03
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
 .float 0
 .set TEXT_Y, TEXT_X + 4
-.float 12.0
+.float 21.5
 .set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
@@ -134,7 +134,7 @@ blrl
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
 .float 2
 .set TEXT_Y, TEXT_X + 4
-.float 12
+.float 21.5
 .set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
