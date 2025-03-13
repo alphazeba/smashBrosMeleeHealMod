@@ -14,6 +14,8 @@ lwz r3,0x0(r3)
 branchl r12,0x8036a590 # assumedly creates the cobj
 mr REG_COBJ,r3
 
+# b GO_STRAIGHT_HERE
+
 # build GOBJ
 li r3, 19
 li r4, 20
@@ -32,8 +34,8 @@ mr r3, REG_GOBJ
 bl COBJ_CB
 mflr r4
 li r5, COBJ_GXPRI
-branchl r12,0x8039075c
-# Store COBJs GXLinks
+branchl r12, 0x8039075c
+# Store COBJs GXLinks: idk what this does
 load r3, 1 << TEXT_GXLINK
 stw r3, 0x24 (REG_GOBJ)
 
@@ -82,6 +84,78 @@ setupPiece Y_BTN_LOC, Y_BTN_STRUCT
 setupPiece L_BTN_LOC, L_BTN_STRUCT
 setupPiece R_BTN_LOC, R_BTN_STRUCT
 setupPiece Z_BTN_LOC, Z_BTN_STRUCT
+# GO_STRAIGHT_HERE:
+## background
+#Create gobj
+# COPY AND PASTE WOREKD? MAYBE MY OFFSET THING DIDN"T WORK
+li  r3,14
+li  r4,15
+li  r5,0
+# getNameTagXfloat (did this not work?)
+branchl r12,0x803901f0
+.set REG_BG_GOBJ, 23
+mr  REG_BG_GOBJ,r3
+#Create Background
+load  r3,0x804a1ed0
+lwz r3,0x0(r3)
+branchl r12,0x80370e44
+.set REG_BG_JOBJ, 22
+mr  REG_BG_JOBJ,r3
+# Add as object
+mr  r3,REG_BG_GOBJ
+lbz	r4, -0x3E57 (r13)
+mr  r5,REG_BG_JOBJ
+branchl r12,0x80390a70
+# Add GX Link
+mr  r3,REG_BG_GOBJ
+load  r4,0x80391070
+li  r5, TEXT_GXLINK
+li  r6,0
+branchl r12,0x8039069c
+
+# Get HUD pos
+getNameTagXfloat f1, r3
+# Set bg position
+lfs f1,0x0 (r3)
+lfs f2, BG_X (REG_DATA_ADDR)
+fadds f1,f1,f2
+stfs  f1,0x38 (REG_BG_JOBJ)
+lfs f1, BG_Y (REG_DATA_ADDR)
+stfs  f1,0x3C (REG_BG_JOBJ)
+# Adjust scale
+lfs f1, BG_W (REG_DATA_ADDR)
+stfs f1, 0x2c (REG_BG_JOBJ)
+lfs f1, BG_H (REG_DATA_ADDR)
+stfs f1, 0x30 (REG_BG_JOBJ)
+# Get JOBJ 1
+mr  r3,REG_BG_JOBJ
+addi  r4,sp,0x80
+li  r5,1
+li  r6,-1
+branchl r12,0x80011e24
+# Z transform = 0
+lwz r3,0x80(sp)
+li  r4,0
+stw r4,0x40(r3)
+# Remove unneccessary dobjs
+lwz r3,0x80(sp)
+lwz r3,0x18(r3)  #first dobj
+lwz r4,0x14(r3)
+ori r4,r4,0x1
+stw r4,0x14(r3)
+lwz r3,0x4(r3)  #next dobj
+lwz r4,0x14(r3)
+ori r4,r4,0x1
+stw r4,0x14(r3)
+# Adjust opacity of BG
+lwz r3,0x4(r3)  #next dobj
+lwz r3,0x8(r3)  #mobj
+lwz r3,0xC(r3)  #material
+lfs f1, BG_OPACITY (REG_DATA_ADDR)
+stfs f1, 0xC(r3)
+# Adjust color of BG
+lwz r4, BG_COLOR (REG_DATA_ADDR)
+stw r4, 0x4(r3)
 
 SETUP_PLAYER_DONE:
 addi REG_PLAYER_INDEX, REG_PLAYER_INDEX, 1

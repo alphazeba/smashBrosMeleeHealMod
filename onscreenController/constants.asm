@@ -44,5 +44,5 @@
 
 # text struct + 0x8f offset is where opacity is stored.
 .set TEXT_STRUCT_OPACITY_BYTE_OFFSET, 0x8f
-.set UNPRESSED_OPACITY, 0x4f
+.set UNPRESSED_OPACITY, 0x5f
 .set PRESSED_OPACITY, 0xff

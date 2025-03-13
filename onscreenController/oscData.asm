@@ -2,46 +2,55 @@ DATA_LOC:
 blrl
 .set FLOAT_ZERO, 0
 .float 0.0
-# .set FLOAT_ONE, FLOAT_ZERO + 4
-# .float 1.0
+.set BG_X, FLOAT_ZERO + 4
+.float 1
+.set BG_Y, BG_X + 4
+.float -19.5
+.set BG_W, BG_Y + 4
+.float 2
+.set BG_H, BG_W + 4
+.float 1.95
+.set BG_OPACITY, BG_H + 4
+.float 0.33
+.set BG_COLOR, BG_OPACITY + 4
+.byte 0,0,0,255
 
 MAIN_STICK_LOC:
 blrl
 .set TEXT_CANVAS_SCALE, 0
-.float 0.08
+.float 0.1
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float -3.5
+.float -3
 .set TEXT_Y, TEXT_X + 4
-.float 12.5
+.float 11.5
 .set MOVE_SCALE, TEXT_Y + 4
 .float 1.0
 .set TEXT, MOVE_SCALE + 4
-.string "o"
+.string "."
 .align 2
 
 C_STICK_LOC:
 blrl
 .set TEXT_CANVAS_SCALE, 0
-.float 0.07
+.float 0.1
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float 1
+.float 0
 .set TEXT_Y, TEXT_X + 4
-.float 13
+.float 11.5
 .set MOVE_SCALE, TEXT_Y + 4
 .float 1
 .set TEXT, MOVE_SCALE + 4
-.string "o"
+.string "."
 .align 2
-
 
 A_BTN_LOC:
 blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.04
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float 5
+.float 4.5
 .set TEXT_Y, TEXT_X + 4
-.float 14.0
+.float 13
 .set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
@@ -53,9 +62,9 @@ blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.03
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float 3.5
+.float 3
 .set TEXT_Y, TEXT_X + 4
-.float 15
+.float 14
 .set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
@@ -67,9 +76,9 @@ blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.03
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float 6
+.float 5.5
 .set TEXT_Y, TEXT_X + 4
-.float 13.0
+.float 12
 .set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
@@ -81,9 +90,9 @@ blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.03
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float 5
+.float 4.5
 .set TEXT_Y, TEXT_X + 4
-.float 12.5
+.float 11.5
 .set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4
@@ -95,7 +104,7 @@ blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.04
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float -1.5
+.float -3
 .set TEXT_Y, TEXT_X + 4
 .float 12.0
 .set MOVE_SCALE, TEXT_Y + 4
@@ -109,7 +118,7 @@ blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.04
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float 2.5
+.float 0
 .set TEXT_Y, TEXT_X + 4
 .float 12.0
 .set MOVE_SCALE, TEXT_Y + 4
@@ -123,9 +132,9 @@ blrl
 .set TEXT_CANVAS_SCALE, 0
 .float 0.03
 .set TEXT_X, TEXT_CANVAS_SCALE + 4
-.float 1
+.float 2
 .set TEXT_Y, TEXT_X + 4
-.float 12.0
+.float 12
 .set MOVE_SCALE, TEXT_Y + 4
 .float 0.5
 .set TEXT, MOVE_SCALE + 4

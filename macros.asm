@@ -61,7 +61,7 @@ lwz \regout, -0x4(sp)
 
 .macro offsetaddr reg, regb, baseaddr, offset, regi
 load \reg, \baseaddr
-load \regb, \offset
+li \regb, \offset # can probably replace this with li
 mullw \regb, \regb, \regi
 add \reg, \reg, \regb
 .endm
